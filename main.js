@@ -1,18 +1,21 @@
 ! function () {
-    function writeCode(prefix, code, fn) {
+    var duration = 50
+    function writeCode(prefix,code, fn) {
         let container = document.querySelector('.code')
         let styleTag = document.querySelector('#styleTag')
         let n = 0
-        let id = setInterval(() => {
+        let id
+        id = setTimeout(function run(){
             n += 1
             container.innerHTML = code.substring(0, n)
             styleTag.innerHTML = code.substring(0, n)
             container.scrollTop = container.scrollHeight
-            if (n >= code.length) {
-                window.clearInterval(id)
+            if (n < code.length) {
+                id = setTimeout(run,duration)
+            }else{
                 fn && fn.call()
             }
-        }, 10)
+        }, duration)
     }
     let code = `/*
 * 我们先画个皮
@@ -61,7 +64,7 @@ right: 50%;
 margin-right: -114px;
 }
 /*
-* 来一个眼眸
+* 来两个眼眸
 */
 .eye::before {
 content: '';
@@ -132,7 +135,7 @@ left: 50%;
 margin-left: -100px;
 height: 132px;
 overflow: hidden;
-width: 100%;
+width: 320px;
 }
 .lowerLip {
 width: 200px;
@@ -163,4 +166,23 @@ border-radius: 50%;
 */
 `
     writeCode('', code)
+
+    $('.actions').on('click','button',function(e){
+        let $button = $(e.currentTarget)
+        let speed = $button.attr('data-speed')
+        $button.addClass('active')
+            .siblings('.active').removeClass('active')
+        switch(speed){
+            case 'slow':
+                duration = 100
+                break
+            case 'normal':
+                duration = 50
+                break
+            case 'fast':
+                duration = 10
+                break
+        }
+    })
+    
 }.call()

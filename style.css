@@ -47,5 +47,24 @@
 }
 
 .actions {
-  border: 1px solid red;
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.actions>button {
+  font-size: 16px;
+  padding: 8px 10px;
+  margin: 10px;
+  border: none;
+}
+
+.actions>button.active {
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.actions>button:focus {
+  outline: none;
 }
