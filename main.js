@@ -24,10 +24,12 @@ background: #ffe600;
 * 接着画皮卡丘的鼻子
 */
 .nose {
+width: 0;
+height: 0;
 border-style: solid;
 border-width: 10px 12px;
-border-color: black transparent transparent transparent;
-border-radius: 11px;
+border-color: black transparent transparent;
+border-radius: 50%;
 position: absolute;
 left: 50%;
 top: 26px;
@@ -105,7 +107,7 @@ height: 25px;
 border: 2px solid black;
 border-top: none;
 position: absolute;
-margin-top: 38px;
+top: 38px;
 background: #ffe600;
 }
 .upperLip.left {
