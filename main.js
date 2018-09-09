@@ -18,6 +18,7 @@
         }, duration)
     }
     let code = `/*
+* 大家好，下面我将用CSS画个皮卡丘
 * 我们先画个皮
 */
 .preview-wrapper {

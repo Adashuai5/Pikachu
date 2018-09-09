@@ -16,18 +16,10 @@
 #wrapper {
   height: 100vh;
   display: grid;
-  grid-template-columns: 1fr;
   grid-template-rows: 50% 50%;
 }
 
-.code-wrapper {
-  grid-column: 1;
-  grid-row: 1;
-}
-
 .preview-wrapper {
-  grid-column: 1;
-  grid-row: 2;
   height: 100%;
   display: flex;
   justify-content: center;
