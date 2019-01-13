@@ -13,6 +13,22 @@
   box-sizing: border-box;
 }
 
+.token.selector {
+  color: #000;
+}
+
+.token.property {
+  color: #000;
+}
+
+.token.function {
+  color: #000;
+}
+
+.token.punctuation {
+  color: #000;
+}
+
 #wrapper {
   height: 100vh;
   display: grid;

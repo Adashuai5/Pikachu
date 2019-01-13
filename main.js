@@ -1,24 +1,40 @@
 ! function () {
     var duration = 50
-    function writeCode(prefix,code, fn) {
-        let container = document.querySelector('.code')
+
+    function writeCode(prefix, code, fn) {
+        let domCode = document.querySelector('.code')
         let styleTag = document.querySelector('#styleTag')
         let n = 0
         let id
-        id = setTimeout(function run(){
+        id = setTimeout(function run() {
             n += 1
-            container.innerHTML = code.substring(0, n)
-            styleTag.innerHTML = code.substring(0, n)
-            container.scrollTop = container.scrollHeight
+            domCode.innerHTML = Prism.highlight(prefix + code.substring(0, n), Prism.languages.css)
+            styleTag.innerHTML = prefix + code.substring(0, n)
+            domCode.scrollTop = domCode.scrollHeight
             if (n < code.length) {
-                id = setTimeout(run,duration)
-            }else{
+                id = setTimeout(run, duration)
+            } else {
                 fn && fn.call()
             }
         }, duration)
     }
     let code = `/*
-* 大家好，下面我将用CSS画个皮卡丘
+* 大家好，下面我将用 CSS 画个皮卡丘
+* 先让代码变得好看一点
+*/
+.token.selector {
+    color: #690;
+}
+.token.property {
+    color: #905;
+}
+.token.function {
+    color: #DD4A68;
+}
+.token.punctuation {
+    color: #999;
+}
+/*
 * 我们先画个皮
 */
 .preview-wrapper {
@@ -168,12 +184,12 @@ border-radius: 50%;
 `
     writeCode('', code)
 
-    $('.actions').on('click','button',function(e){
+    $('.actions').on('click', 'button', function (e) {
         let $button = $(e.currentTarget)
         let speed = $button.attr('data-speed')
         $button.addClass('active')
             .siblings('.active').removeClass('active')
-        switch(speed){
+        switch (speed) {
             case 'slow':
                 duration = 100
                 break
@@ -185,5 +201,5 @@ border-radius: 50%;
                 break
         }
     })
-    
+
 }.call()
